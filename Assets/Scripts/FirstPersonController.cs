@@ -9,7 +9,7 @@ public class FirstPersonController : MonoBehaviour
 {
     private Rigidbody rb;
     private PlayerStats stats;
-
+    [SerializeField] private WeaponSwitch weaponSwitch;
     #region Camera Movement Variables
 
     public Camera playerCamera;
@@ -29,7 +29,7 @@ public class FirstPersonController : MonoBehaviour
     
     private float yaw = 0.0f;
     private float pitch = 0.0f;
-    private Image crosshairObject;
+    [SerializeField]private Image crosshairObject;
 
    
     #endregion
@@ -101,7 +101,7 @@ public class FirstPersonController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
-        crosshairObject = GetComponentInChildren<Image>();
+        
 
         
         playerCamera.fieldOfView = fov;
@@ -122,11 +122,7 @@ public class FirstPersonController : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
         }
 
-        if(crosshair)
-        {
-            crosshairObject.sprite = crosshairImage;
-            crosshairObject.color = crosshairColor;
-        }
+        
         else
         {
             crosshairObject.gameObject.SetActive(false);
@@ -395,4 +391,5 @@ public class FirstPersonController : MonoBehaviour
             joint.localPosition = new Vector3(Mathf.Lerp(joint.localPosition.x, jointOriginalPos.x, Time.deltaTime * bobSpeed), Mathf.Lerp(joint.localPosition.y, jointOriginalPos.y, Time.deltaTime * bobSpeed), Mathf.Lerp(joint.localPosition.z, jointOriginalPos.z, Time.deltaTime * bobSpeed));
         }
     }
+    
 }

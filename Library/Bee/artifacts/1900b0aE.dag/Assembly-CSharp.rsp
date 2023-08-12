@@ -376,6 +376,7 @@
 "Assets/Scripts/UI/ProgressBar.cs"
 "Assets/Scripts/UI/WeaponUI.cs"
 "Assets/Scripts/WeaponManager.cs"
+"Assets/Scripts/WeaponSwitch.cs"
 -langversion:9.0
 
 /deterministic

@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class WeaponManager : MonoBehaviour
 {
@@ -23,16 +25,9 @@ public class WeaponManager : MonoBehaviour
     public Vector3 normalLocalPos;
     public Vector3 aimingLocalPos;
     public float aimSmoothing = 10;
-
-    public bool randomizeRecoil;
-    public Vector2 randomRecoilCons;
     
-
-    private Color emptyColor = new Color(0, 0, 0, 0);
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
         currentAmmo = ammo;
         currentMagazine = magazine;
         canShoot = true;
@@ -40,6 +35,12 @@ public class WeaponManager : MonoBehaviour
         hud = GetComponentInParent<HUDManager>();
         hud.UpdateWeaponUI(this);
     }
+
+    private void OnEnable()
+    {
+        hud.UpdateWeaponUI(this);
+    }
+
     // Update is called once per frame
     void Update()
     {
