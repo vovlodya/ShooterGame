@@ -34,7 +34,7 @@ public class ItemsManager : MonoBehaviour
     }
     void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
    
